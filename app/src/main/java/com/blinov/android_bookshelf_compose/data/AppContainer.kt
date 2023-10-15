@@ -6,10 +6,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 interface AppContainer {
 
-
+    val booksRepository: BooksRepository
 }
 
-class DefaultAppContainer(): AppContainer {
+class DefaultAppContainer() : AppContainer {
 
     private val BASE_URL = "https://www.googleapis.com/books/v1/"
 
@@ -19,4 +19,8 @@ class DefaultAppContainer(): AppContainer {
         .build()
 
     private val bookService: BookService by lazy { retrofit.create(BookService::class.java) }
+
+    override val booksRepository: BooksRepository by lazy {
+        BooksRepositoryImpl(bookService)
+    }
 }
