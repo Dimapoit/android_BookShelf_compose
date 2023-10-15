@@ -22,7 +22,11 @@ class BooksViewModel
     var booksUiState: BooksUiState by mutableStateOf(BooksUiState.Loading)
     private set
 
-    suspend fun getBooks(query: String = "book", maxResults: Int = 40) {
+    init {
+        getBooks()
+    }
+
+    fun getBooks(query: String = "book", maxResults: Int = 40) {
         viewModelScope.launch {
             booksUiState = BooksUiState.Loading
             booksUiState =
