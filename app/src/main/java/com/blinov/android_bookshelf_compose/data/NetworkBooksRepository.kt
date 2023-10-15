@@ -2,7 +2,7 @@ package com.blinov.android_bookshelf_compose.data
 
 import com.blinov.android_bookshelf_compose.network.model.BookService
 
-class BooksRepositoryImpl(
+class NetworkBooksRepository(
     private val bookService: BookService
 ) : BooksRepository {
 

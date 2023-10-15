@@ -21,6 +21,6 @@ class DefaultAppContainer() : AppContainer {
     private val bookService: BookService by lazy { retrofit.create(BookService::class.java) }
 
     override val booksRepository: BooksRepository by lazy {
-        BooksRepositoryImpl(bookService)
+        NetworkBooksRepository(bookService)
     }
 }
